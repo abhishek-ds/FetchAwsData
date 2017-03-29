@@ -16,7 +16,7 @@ namespace FetchAWSData
             WebClient client = new WebClient();
             string urlFile = ConfigurationManager.AppSettings["TargetUrlFile"];
             string destinationPath = ConfigurationManager.AppSettings["outPutFilePath"];
-
+            Console.WriteLine("Extracting Data, Might Take Some Time \n");
             using (var reader = new StreamReader(urlFile))
             {
                 string line;
@@ -31,7 +31,9 @@ namespace FetchAWSData
             {
                 XmlDocument document = new XmlDocument();
                 document.Load(urlArray[i]);    
-                File.WriteAllText(destinationPath+ "File" + i + ".xml", document.InnerXml);
+                File.WriteAllText(destinationPath + "File" + i + ".xml", document.InnerXml);
+                Console.SetCursorPosition(0, Console.CursorTop);
+                Console.Write("Processing File Number {0} ", i+1);
             }
             Console.WriteLine("Process Complete");
             Console.ReadKey();
