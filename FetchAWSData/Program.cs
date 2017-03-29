@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net;
+using System.Xml;
 
 namespace FetchAWSData
 {
@@ -12,7 +11,7 @@ namespace FetchAWSData
         static void Main()
         {
             List<string> awsUrl = new List<string>();
-
+            WebClient client = new WebClient();
             using (var reader = new StreamReader(@"C:\Users\Abhishek\Desktop\test.txt"))
             {
                 string line;
@@ -22,8 +21,14 @@ namespace FetchAWSData
                 }
             }
             string[] urlArray = awsUrl.ToArray();
- 
-            Console.WriteLine(urlArray[2]);
+
+            foreach (string x in urlArray)
+            {
+                XmlDocument document = new XmlDocument();
+                document.Load(x);
+                File.WriteAllText("", document.InnerXml);
+            }
+            Console.WriteLine("Process Complete");
             Console.ReadKey();
         }
     }
