@@ -35,7 +35,7 @@ namespace FetchAWSData
                 Console.SetCursorPosition(0, Console.CursorTop);
                 Console.Write("Processing File Number {0} ", i+1);
             }
-            Console.WriteLine("Process Complete");
+            Console.WriteLine("\n \n Process Complete");
             Console.ReadKey();
         }
     }
