@@ -35,10 +35,11 @@ namespace FetchAWSData
             
             //ds--fetch all aws data in a new excel
             fetchAwsFiles.FetchData(urlArray, destinationPath);
+
+            //ds--Also can call IXport as XML class to save as an XML
             Console.WriteLine("\n \nProcess Complete");
             Console.ReadKey();
             }
-
        
     }
 }
