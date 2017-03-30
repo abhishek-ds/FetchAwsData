@@ -55,8 +55,6 @@
   <ItemGroup>
     <Compile Include="ExportAsXml.cs" />
     <Compile Include="FetchFiles.cs" />
-    <Compile Include="IExportAsXml.cs" />
-    <Compile Include="IFetchFiles.cs" />
     <Compile Include="XmlToExcelConverter.cs" />
     <Compile Include="IXmlToExcelConverter.cs" />
     <Compile Include="Program.cs" />

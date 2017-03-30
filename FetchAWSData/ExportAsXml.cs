@@ -4,7 +4,7 @@ using System.Xml;
 
 namespace FetchAWSData
 {
-    class ExportAsXml : IExportAsXml
+    class ExportAsXml
     {
         public void ExportAsExm(XmlDocument document, string[] urlArray, int i, string destinationPath)
         {
