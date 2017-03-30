@@ -7,14 +7,14 @@ using System.Xml;
 
 namespace FetchAWSData
 {
-    class FetchFiles : IFetchFiles
+    class FetchFiles 
     {
         public void FetchData(string[] urlArray, string destinationPath)
         {
             WebClient client = new WebClient();
             DataSet dataSet = new DataSet();
             Application excel = new Application();
-            IXmlToExcelConverter excelConverter = new XmlToExcelConverter();
+            XmlToExcelConverter excelConverter = new XmlToExcelConverter();
             XmlDocument document = new XmlDocument();
 
             for (int i = 0; i < urlArray.Length; i++)
@@ -30,9 +30,46 @@ namespace FetchAWSData
                     Console.SetCursorPosition(0, Console.CursorTop);
                     Console.Write("Processing File Number {0} ", i + 1);
                 }
+
                 workBook.SaveAs(destinationPath + i);
+                releaseObject(workBook);                
+                
             }
             excel.Quit();
+            releaseObject(excel);
+        }
+
+
+        private void releaseObject(object obj)
+
+        {
+
+            try
+
+            {
+
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+
+                obj = null;
+
+            }
+
+            catch (Exception ex)
+
+            {
+
+                obj = null;
+
+            }
+
+            finally
+
+            {
+
+                GC.Collect();
+
+            }
+
         }
     }
 }

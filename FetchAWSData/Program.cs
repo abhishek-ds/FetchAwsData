@@ -18,7 +18,7 @@ namespace FetchAWSData
             string urlFile = ConfigurationManager.AppSettings["TargetUrlFile"];
             string destinationPath = ConfigurationManager.AppSettings["outPutFilePath"];
             Console.WriteLine("Extracting Data, Might Take Some Time \n");
-            IFetchFiles fetchAwsFiles = new FetchFiles();
+            FetchFiles fetchAwsFiles = new FetchFiles();
 
             //ds--fetch xml aws urls from TargetUrlFile
             using (var reader = new StreamReader(urlFile))

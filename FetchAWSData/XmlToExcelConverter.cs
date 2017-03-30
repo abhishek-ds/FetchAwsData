@@ -4,10 +4,11 @@ using System.Data;
 
 namespace FetchAWSData
 {
-    class XmlToExcelConverter : IXmlToExcelConverter
+    class XmlToExcelConverter 
     {
         public void ExportToExcel(System.Data.DataTable dataTable, Application excel, Workbook workBook)
         {
+            FetchFiles ff = new FetchFiles();
             Worksheet workSheet = workBook.ActiveSheet;
             int Column = workSheet.UsedRange.Columns.Count - 1;
             int Column1 = Column;
@@ -34,6 +35,7 @@ namespace FetchAWSData
             }
 
             workSheet.Activate();
+            System.Runtime.InteropServices.Marshal.ReleaseComObject(workSheet);
         }
     }
 }
