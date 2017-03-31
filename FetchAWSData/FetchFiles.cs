@@ -32,44 +32,29 @@ namespace FetchAWSData
                 }
 
                 workBook.SaveAs(destinationPath + i);
-                releaseObject(workBook);                
-                
+                releaseObject(workBook);                             
             }
             excel.Quit();
             releaseObject(excel);
         }
-
-
+        
         private void releaseObject(object obj)
-
         {
-
             try
-
             {
-
                 System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
-
                 obj = null;
-
             }
 
             catch (Exception ex)
-
             {
-
                 obj = null;
-
             }
 
             finally
-
             {
-
                 GC.Collect();
-
             }
-
         }
     }
 }
